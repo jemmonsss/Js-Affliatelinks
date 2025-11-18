@@ -76,6 +76,24 @@
         .links-container {
             display: flex;
             flex-direction: column;
+            gap: 30px;
+        }
+
+        .category {
+            margin-bottom: 20px;
+        }
+
+        .category-title {
+            font-size: 1.5em;
+            color: #c77dff;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(157, 78, 221, 0.3);
+        }
+
+        .category-links {
+            display: flex;
+            flex-direction: column;
             gap: 15px;
         }
 
@@ -143,30 +161,48 @@
         <div class="links-container">
             <!-- 
                 ═══════════════════════════════════════════════════
-                TO ADD A NEW LINK: Copy this entire link-card section
-                and paste it below. Then change the href, title, and description.
+                TO ADD A NEW CATEGORY: Copy the entire category section
+                TO ADD A NEW LINK: Copy a link-card and paste inside category-links
                 ═══════════════════════════════════════════════════
             -->
 
-            <!-- LINK 1 - EDIT THIS -->
-            <a href="https://cybrancee.com/client/aff.php?aff=698" class="link-card" target="_blank">
-                <div class="link-title">Cybrancee</div>
-                <div class="link-description">Great hosting service for Discord bots, web projects, and game servers. Perfect for developers and creators.</div>
-            </a>
+            <!-- CATEGORY 1: HOSTING -->
+            <div class="category">
+                <h2 class="category-title">🖥️ Hosting Services</h2>
+                <div class="category-links">
+                    
+                    <a href="https://cybrancee.com/client/aff.php?aff=698" class="link-card" target="_blank">
+                        <div class="link-title">Cybrancee</div>
+                        <div class="link-description">Great hosting service for Discord bots, web projects, and game servers. Perfect for developers and creators.</div>
+                    </a>
 
-            <!-- LINK 2 - EDIT THIS -->
-            <a href="https://my.racknerd.com/aff.php?aff=16419" class="link-card" target="_blank">
-                <div class="link-title">RackNerd</div>
-                <div class="link-description">RackNerd LLC is a premium provider of Dedicated Servers, VPS, and Colocation, with decades of experience in managed services, data center operations, consulting services, and Infrastructure-as-a-Service.</div>
-            </a> 
+                    <a href="https://my.racknerd.com/aff.php?aff=16419" class="link-card" target="_blank">
+                        <div class="link-title">RackNerd</div>
+                        <div class="link-description">RackNerd LLC is a premium provider of Dedicated Servers, VPS, and Colocation, with decades of experience in managed services, data center operations, consulting services, and Infrastructure-as-a-Service.</div>
+                    </a> 
 
-            <!-- LINK 3 - EDIT THIS -->
-            <a href="https://hostinger.com/?REFERRALCODE=Datafying" class="link-card" target="_blank">
-                <div class="link-title">Hostinger (via Datafying Tech Services)</div>
-                <div class="link-description">Web hosting, Cloud hosting, Agency Hosting, VPS hosting - some of the cheapest and fastest setup for fivem etc, website builder and email marketing builder.</div>
-            </a>
+                    <a href="https://hostinger.com/?REFERRALCODE=Datafying" class="link-card" target="_blank">
+                        <div class="link-title">Hostinger (via Datafying Tech Services)</div>
+                        <div class="link-description">Web hosting, Cloud hosting, Agency Hosting, VPS hosting - some of the cheapest and fastest setup for fivem etc, website builder and email marketing builder.</div>
+                    </a>
 
-            <!-- ADD MORE LINKS HERE - Just copy and paste a link-card section -->
+                </div>
+            </div>
+
+            <!-- CATEGORY 2: ADD YOUR OWN - Copy this entire section to add more categories -->
+            <!-- 
+            <div class="category">
+                <h2 class="category-title">🎮 Gaming</h2>
+                <div class="category-links">
+                    
+                    <a href="YOUR-LINK" class="link-card" target="_blank">
+                        <div class="link-title">Product Name</div>
+                        <div class="link-description">Description here</div>
+                    </a>
+
+                </div>
+            </div>
+            -->
 
         </div>
 
