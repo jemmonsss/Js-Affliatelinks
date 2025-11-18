@@ -29,12 +29,18 @@
             text-align: center;
             margin-bottom: 50px;
             position: relative;
+            padding-top: 60px;
         }
 
-        .about-btn {
+        .nav-buttons {
             position: absolute;
             top: 0;
             right: 0;
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn {
             background: rgba(157, 78, 221, 0.2);
             border: 1px solid rgba(157, 78, 221, 0.4);
             color: #c77dff;
@@ -45,16 +51,16 @@
             transition: all 0.3s ease;
         }
 
-        .about-btn:hover {
+        .nav-btn:hover {
             background: rgba(157, 78, 221, 0.3);
             border-color: rgba(157, 78, 221, 0.6);
             transform: translateY(-2px);
         }
 
         @media (max-width: 600px) {
-            .about-btn {
+            .nav-buttons {
                 position: static;
-                display: inline-block;
+                justify-content: center;
                 margin-bottom: 20px;
             }
         }
@@ -151,7 +157,10 @@
 <body>
     <div class="container">
         <header>
-            <a href="about.html" class="about-btn">About</a>
+            <div class="nav-buttons">
+                <a href="about.html" class="nav-btn">About</a>
+                <a href="contact.html" class="nav-btn">Contact</a>
+            </div>
             <!-- EDIT YOUR NAME HERE -->
             <h1>J_emmons_07</h1>
             <!-- EDIT YOUR SUBTITLE/BIO HERE -->
