@@ -28,6 +28,35 @@
         header {
             text-align: center;
             margin-bottom: 50px;
+            position: relative;
+        }
+
+        .about-btn {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: rgba(157, 78, 221, 0.2);
+            border: 1px solid rgba(157, 78, 221, 0.4);
+            color: #c77dff;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .about-btn:hover {
+            background: rgba(157, 78, 221, 0.3);
+            border-color: rgba(157, 78, 221, 0.6);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .about-btn {
+                position: static;
+                display: inline-block;
+                margin-bottom: 20px;
+            }
         }
 
         h1 {
@@ -104,6 +133,7 @@
 <body>
     <div class="container">
         <header>
+            <a href="about.html" class="about-btn">About</a>
             <!-- EDIT YOUR NAME HERE -->
             <h1>J_emmons_07</h1>
             <!-- EDIT YOUR SUBTITLE/BIO HERE -->
@@ -134,7 +164,7 @@
             <a href="https://hostinger.com/?REFERRALCODE=Datafying" class="link-card" target="_blank">
                 <div class="link-title">Hostinger (via Datafying Tech Services)</div>
                 <div class="link-description">Web hosting, Cloud hosting, Agency Hosting, VPS hosting - some of the cheapest and fastest setup for fivem etc, website builder and email marketing builder.</div>
-            </a> 
+            </a>
 
             <!-- ADD MORE LINKS HERE - Just copy and paste a link-card section -->
 
