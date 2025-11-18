@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Affiliate Links</title>
+    
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="favicon" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
     <style>
         * {
             margin: 0;
@@ -94,15 +96,118 @@
         .category-title {
             font-size: 1.5em;
             color: #c77dff;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
+            margin-bottom: 0;
+            padding: 20px;
             border-bottom: 2px solid rgba(157, 78, 221, 0.3);
+            cursor: pointer;
+            user-select: none;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(157, 78, 221, 0.3);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-title:hover {
+            background: rgba(157, 78, 221, 0.1);
+            border-color: rgba(157, 78, 221, 0.5);
+        }
+
+        .category-title::after {
+            content: '▼';
+            font-size: 0.8em;
+            transition: transform 0.3s ease;
+        }
+
+        .category-title.collapsed::after {
+            transform: rotate(-90deg);
         }
 
         .category-links {
             display: flex;
             flex-direction: column;
             gap: 15px;
+            margin-top: 15px;
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
+            opacity: 1;
+        }
+
+        .category-links.collapsed {
+            max-height: 0;
+            opacity: 0;
+            margin-top: 0;
+        }
+
+        .search-filter-container {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(157, 78, 221, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-label {
+            display: block;
+            color: #c77dff;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.9em;
+        }
+
+        #searchInput,
+        #categoryFilter {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(157, 78, 221, 0.3);
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 1em;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        #searchInput:focus,
+        #categoryFilter:focus {
+            outline: none;
+            border-color: rgba(157, 78, 221, 0.6);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        #categoryFilter {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c77dff' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+        }
+
+        #categoryFilter option {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        .no-results {
+            text-align: center;
+            color: #808080;
+            padding: 40px 20px;
+            font-size: 1.1em;
         }
 
         .link-card {
@@ -169,6 +274,24 @@
             <p class="subtitle">Check out my favorite products and services</p>
         </header>
 
+        <!-- Search and Filter -->
+        <div class="search-filter-container">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="searchInput" class="filter-label">🔍 Search</label>
+                    <input type="text" id="searchInput" placeholder="Search services..." onkeyup="filterLinks()">
+                </div>
+                <div class="filter-group">
+                    <label for="categoryFilter" class="filter-label">📂 Category</label>
+                    <select id="categoryFilter" onchange="filterLinks()">
+                        <option value="all">All Categories</option>
+                        <option value="hosting">Hosting Services</option>
+                        <!-- Add more categories here as you add them -->
+                    </select>
+                </div>
+            </div>
+        </div>
+
         <div class="links-container">
             <!-- 
                 ═══════════════════════════════════════════════════
@@ -178,21 +301,21 @@
             -->
 
             <!-- CATEGORY 1: HOSTING -->
-            <div class="category">
-                <h2 class="category-title">🖥️ Hosting Services</h2>
+            <div class="category" data-category="hosting">
+                <h2 class="category-title" onclick="toggleCategory(this)">🖥️ Hosting Services</h2>
                 <div class="category-links">
                     
-                    <a href="https://cybrancee.com/client/aff.php?aff=698" class="link-card" target="_blank">
+                    <a href="https://cybrancee.com/client/aff.php?aff=698" class="link-card" target="_blank" data-title="Cybrancee" data-description="Great hosting service for Discord bots, web projects, and game servers. Perfect for developers and creators.">
                         <div class="link-title">Cybrancee</div>
                         <div class="link-description">Great hosting service for Discord bots, web projects, and game servers. Perfect for developers and creators.</div>
                     </a>
 
-                    <a href="https://my.racknerd.com/aff.php?aff=16419" class="link-card" target="_blank">
+                    <a href="https://my.racknerd.com/aff.php?aff=16419" class="link-card" target="_blank" data-title="RackNerd" data-description="RackNerd LLC is a premium provider of Dedicated Servers, VPS, and Colocation, with decades of experience in managed services, data center operations, consulting services, and Infrastructure-as-a-Service.">
                         <div class="link-title">RackNerd</div>
                         <div class="link-description">RackNerd LLC is a premium provider of Dedicated Servers, VPS, and Colocation, with decades of experience in managed services, data center operations, consulting services, and Infrastructure-as-a-Service.</div>
                     </a> 
 
-                    <a href="https://hostinger.com/?REFERRALCODE=Datafying" class="link-card" target="_blank">
+                    <a href="https://hostinger.com/?REFERRALCODE=Datafying" class="link-card" target="_blank" data-title="Hostinger (via Datafying Tech Services)" data-description="Web hosting, Cloud hosting, Agency Hosting, VPS hosting - some of the cheapest and fastest setup for fivem etc, website builder and email marketing builder.">
                         <div class="link-title">Hostinger (via Datafying Tech Services)</div>
                         <div class="link-description">Web hosting, Cloud hosting, Agency Hosting, VPS hosting - some of the cheapest and fastest setup for fivem etc, website builder and email marketing builder.</div>
                     </a>
@@ -202,11 +325,11 @@
 
             <!-- CATEGORY 2: ADD YOUR OWN - Copy this entire section to add more categories -->
             <!-- 
-            <div class="category">
+            <div class="category" data-category="gaming">
                 <h2 class="category-title">🎮 Gaming</h2>
                 <div class="category-links">
                     
-                    <a href="YOUR-LINK" class="link-card" target="_blank">
+                    <a href="YOUR-LINK" class="link-card" target="_blank" data-title="Product Name" data-description="Description here">
                         <div class="link-title">Product Name</div>
                         <div class="link-description">Description here</div>
                     </a>
@@ -215,11 +338,77 @@
             </div>
             -->
 
+            <!-- No Results Message (hidden by default) -->
+            <div id="noResults" class="no-results" style="display: none;">
+                No services found. Try a different search or category.
+            </div>
+
         </div>
 
         <footer>
             <p>Created by J_emmons_07</p>
         </footer>
     </div>
+
+    <script>
+        function toggleCategory(element) {
+            const categoryLinks = element.nextElementSibling;
+            const isCollapsed = categoryLinks.classList.contains('collapsed');
+            
+            if (isCollapsed) {
+                categoryLinks.classList.remove('collapsed');
+                element.classList.remove('collapsed');
+            } else {
+                categoryLinks.classList.add('collapsed');
+                element.classList.add('collapsed');
+            }
+        }
+
+        function filterLinks() {
+            const searchInput = document.getElementById('searchInput').value.toLowerCase();
+            const categoryFilter = document.getElementById('categoryFilter').value;
+            const categories = document.querySelectorAll('.category');
+            const noResults = document.getElementById('noResults');
+            let hasVisibleResults = false;
+
+            categories.forEach(category => {
+                const categoryName = category.getAttribute('data-category');
+                const links = category.querySelectorAll('.link-card');
+                let categoryHasVisibleLinks = false;
+
+                // Check if category matches filter
+                const categoryMatches = categoryFilter === 'all' || categoryFilter === categoryName;
+
+                links.forEach(link => {
+                    const title = link.getAttribute('data-title').toLowerCase();
+                    const description = link.getAttribute('data-description').toLowerCase();
+                    const searchMatches = title.includes(searchInput) || description.includes(searchInput);
+
+                    // Show link if both category and search match
+                    if (categoryMatches && searchMatches) {
+                        link.style.display = 'block';
+                        categoryHasVisibleLinks = true;
+                        hasVisibleResults = true;
+                    } else {
+                        link.style.display = 'none';
+                    }
+                });
+
+                // Show/hide entire category based on whether it has visible links
+                if (categoryHasVisibleLinks) {
+                    category.style.display = 'block';
+                } else {
+                    category.style.display = 'none';
+                }
+            });
+
+            // Show "no results" message if nothing is visible
+            if (hasVisibleResults) {
+                noResults.style.display = 'none';
+            } else {
+                noResults.style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>
